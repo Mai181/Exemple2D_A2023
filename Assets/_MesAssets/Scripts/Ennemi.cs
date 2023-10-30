@@ -4,7 +4,7 @@ public class Ennemi : MonoBehaviour
 {
     [SerializeField] private float _vitesseEnnemi = 5f;
 
-    void Update()
+    private void Update()
     {
         transform.Translate(Vector3.down * Time.deltaTime * _vitesseEnnemi);
 
@@ -16,11 +16,12 @@ public class Ennemi : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Laser")
         {
             // Actions pour collision avec laser
+            UIManager.Instance.AjouterScore(10);
             Destroy(this.gameObject);
             Destroy(other.gameObject);
         }
@@ -29,6 +30,7 @@ public class Ennemi : MonoBehaviour
             // Actions pour collision avec le joueur
             Destroy(this.gameObject);
             // Réduire la vie du joueur
+            Player.Instance.DommageJoueur();
         }
     }
 }

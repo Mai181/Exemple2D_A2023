@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance; // Mise en place Singleton
+
     [Header("Propriétés Joueur")]
+    [SerializeField] private int _viesJoueur = 3;
     [SerializeField] private float _vitesse = 7f;
     [SerializeField] private GameObject _laserJoueur = default;
     [SerializeField] private float _cadenceTir = 0.5f;
@@ -13,6 +16,24 @@ public class Player : MonoBehaviour
     [SerializeField] private float _maxY = 2.5f;
     [SerializeField] private float _minY = -3.8f;
     [SerializeField] private float _valeurX = 11.3f;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        _viesJoueur = 3;
+    }
+
     private void Update()
     {
         Mouvements();
@@ -51,4 +72,15 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(_valeurX, transform.position.y, 0f);
         }
     }
+    public void DommageJoueur()
+    {
+        _viesJoueur--;
+        UIManager.Instance.ChangeLivesDisplayImage(_viesJoueur);
+        if (_viesJoueur < 1)
+        {
+            Destroy(this.gameObject);
+            SpawnManager.Instance.FinPartie();
+        }
+    }
+
 }
