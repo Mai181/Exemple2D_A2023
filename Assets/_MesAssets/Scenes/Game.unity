@@ -614,6 +614,67 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1548556194
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4565758568619421796, guid: 8877a5dd3e95f3f479bed40cc5840389, type: 3}
+      propertyPath: m_Name
+      value: PUTriple
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302939312141497258, guid: 8877a5dd3e95f3f479bed40cc5840389, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302939312141497258, guid: 8877a5dd3e95f3f479bed40cc5840389, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302939312141497258, guid: 8877a5dd3e95f3f479bed40cc5840389, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302939312141497258, guid: 8877a5dd3e95f3f479bed40cc5840389, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302939312141497258, guid: 8877a5dd3e95f3f479bed40cc5840389, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302939312141497258, guid: 8877a5dd3e95f3f479bed40cc5840389, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302939312141497258, guid: 8877a5dd3e95f3f479bed40cc5840389, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302939312141497258, guid: 8877a5dd3e95f3f479bed40cc5840389, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302939312141497258, guid: 8877a5dd3e95f3f479bed40cc5840389, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302939312141497258, guid: 8877a5dd3e95f3f479bed40cc5840389, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302939312141497258, guid: 8877a5dd3e95f3f479bed40cc5840389, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8877a5dd3e95f3f479bed40cc5840389, type: 3}
 --- !u!1 &1746527127
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,6 +733,7 @@ GameObject:
   - component: {fileID: 1789028206}
   - component: {fileID: 1789028208}
   - component: {fileID: 1789028209}
+  - component: {fileID: 1789028210}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -759,8 +821,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _viesJoueur: 3
-  _vitesse: 100
+  _vitesse: 9
   _laserJoueur: {fileID: 8307088454881507249, guid: 898300a861cba3d41a04f626573dd684, type: 3}
+  _tripleLaserJoueur: {fileID: 5142769827103709128, guid: 5f60b635e07251e4397b208d3d52dc3b, type: 3}
   _cadenceTir: 0.2
   _maxY: 2.5
   _minY: -3.8
@@ -910,3 +973,30 @@ PolygonCollider2D:
       - {x: -0.9, y: -1.51}
       - {x: -0.81, y: -1.43}
   m_UseDelaunayMesh: 0
+--- !u!50 &1789028210
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789028205}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -8,9 +9,11 @@ public class Player : MonoBehaviour
     [SerializeField] private int _viesJoueur = 3;
     [SerializeField] private float _vitesse = 7f;
     [SerializeField] private GameObject _laserJoueur = default;
+    [SerializeField] private GameObject _tripleLaserJoueur = default;
     [SerializeField] private float _cadenceTir = 0.5f;
 
     private float _peutTire = -1f;
+    private bool _tripleLaserActif = false;
 
     [Header("Limites Jeu")]
     [SerializeField] private float _maxY = 2.5f;
@@ -44,7 +47,14 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space) && Time.time > _peutTire)
         {
-            Instantiate(_laserJoueur, transform.position + new Vector3(0f, 0.8f, 0f), Quaternion.identity);
+            if (!_tripleLaserActif)
+            {
+                Instantiate(_laserJoueur, transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(_tripleLaserJoueur, transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
+            }
             _peutTire = Time.time + _cadenceTir;
         }
     }
@@ -55,7 +65,7 @@ public class Player : MonoBehaviour
         float vInput = Input.GetAxisRaw("Vertical");
 
         Vector3 direction = new Vector3(hInput, vInput, 0f);
-        transform.Translate(direction * Time.deltaTime);
+        transform.Translate(direction * Time.deltaTime * _vitesse);
 
         //Limiter mes positions verticalement
         transform.position = new Vector3(transform.position.x, 
@@ -83,4 +93,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void PowerTripleShot()
+    {
+        _tripleLaserActif = true;
+        StartCoroutine(TSCoroutine());
+    }
+
+    IEnumerator TSCoroutine()
+    {
+        yield return new WaitForSeconds(10f);
+        _tripleLaserActif = false;
+    }
 }
