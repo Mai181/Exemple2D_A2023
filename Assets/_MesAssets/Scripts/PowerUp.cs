@@ -32,10 +32,10 @@ public class PowerUp : MonoBehaviour {
                         Player.Instance.PowerTripleShot();
                         break;
                     case 1:
-                        // player.SpeedPowerUp();
+                        Player.Instance.SpeedPowerUp();
                         break;
                     case 2:
-                        // player.ShieldPowerUp();
+                        Player.Instance.ShieldPowerUp();
                         break;
                 }
             }
